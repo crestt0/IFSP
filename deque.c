@@ -7,7 +7,11 @@
  localização de um elemento e a posição do elemento caso esteja na FILA.
 
  Funcionalidades a serem implementadas na estrutura PILHA:
- Inserção, remoção, Topo (mostra o elemento que está no topo da pilha mas não o remove) , verificação se a pilha está vazia, verificação se a pilha está cheia. */
+ Inserção, remoção, Topo (mostra o elemento que está no topo da pilha mas não o remove) , verificação se a pilha está vazia, verificação se a pilha está cheia. 
+ 
+ Funcionalidades a serem implementadas na estrutura DEQUE:
+ Inserção pelo começo ou pelo fim, remoção pelo começo ou pelo fim, exibição dos elementos e suas respectivas posições no deque, verificação se o deque está vazia, verificação se o deque está cheio, 
+ localização de um elemento e a posição do elemento caso esteja no DEQUE.*/
 
 // declarações de fila f, pilha p e deque d
 typedef struct {
@@ -38,13 +42,13 @@ int fila_inserir (){
 	if (f.fim == 51)
 		printf("\na fila esta cheia\n\n");
 	else {
-	printf("\ndigite o numero a ser inserido na fila: ");
-	scanf("%i", &n);
-	
-	f.v[f.fim] = n;
-	f.fim++;
-	
-	printf("\n");}
+		printf("\ndigite o numero a ser inserido na fila: ");
+		scanf("%i", &n);
+			
+		f.v[f.fim] = n;
+		f.fim++;
+		
+		printf("\n");}
 }
 
 int fila_remover(){
@@ -67,10 +71,8 @@ int fila_exibir(){
 		printf("nao ha nenhum elemento na fila\n\n");
 	else{
 		for (i = f.comeco; i < f.fim; i++){
-		printf("elemento %i (posiçao %i da fila), ", f.v[i], i);
-	}
-	printf("\n\n");
-	}
+			printf("elemento %i (posiçao %i da fila), ", f.v[i], i);	}
+		printf("\n\n"); 	}
 }
 
 int fila_localizar(){
@@ -98,13 +100,13 @@ int pilha_inserir(){
 	if (p.topo == 51)
 		printf("\na pilha esta cheia\n\n");
 	else {
-	printf("\ndigite o numero a ser inserido na pilha: ");
-	scanf("%i", &n);
+		printf("\ndigite o numero a ser inserido na pilha: ");
+		scanf("%i", &n);
+			
+		p.v[p.topo] = n;
+		p.topo++;
 		
-	p.v[p.topo] = n;
-	p.topo++;
-	
-	printf("\n");}
+		printf("\n");}
 }
 
 int pilha_remover(){
@@ -126,25 +128,35 @@ int deque_inserir() {
 	else {
 		char r;
 		int n, i;
-		printf("\no elemento sera inserido pelo começo(c) ou pelo fim(f)? ");
-		scanf("%c", &r);
-		printf("\n\ndigite o numero a ser inserido no deque: ");
-		scanf("%i", &n);
-		if (r == 'c'){
-			for (i = d.comeco; i < d.fim; i++)
-				d.v[i+1] = d.v[i];
-			d.v[d.comeco] = n;}
-		else if (r == 'f'){
-			d.v[d.fim] = n;
+		if (d.comeco != d.fim){
+			printf("\no elemento sera inserido pelo começo(c) ou pelo fim(f)? ");
+			scanf(" %c", &r);
+			printf("\n\ndigite o numero a ser inserido no deque: ");
+			scanf(" %i", &n);
+			if (r == 'c'){
+				for (i = d.fim; i > d.fim; i--)
+					d.v[i] = d.v[i-1];
+				d.v[d.comeco] = n;
+				d.fim++;}
+			else if (r == 'f'){
+				d.v[d.fim] = n;
+				d.fim++;}
+			else
+				printf("\nopção invalida\n\n");	}
+		else {
+			printf("\n\ndigite o numero a ser inserido no deque: ");
+			scanf("%i", &n);
+			d.v[d.comeco] = n;
 			d.fim++;}
-		else
-			printf("\nopção invalida\n\n");
+			
 		}
 	}
 	
 int deque_remover(){
 		char r;
-		printf("\no elemento sera removido pelo começo(c) ou pelo fim(f)? ");
+		int i;
+		if (d.comeco == d.fim){
+			printf("\no elemento sera removido pelo começo(c) ou pelo fim(f)? ");
 		scanf("%c", &r);
 		if (r == 'c'){
 			for (i = d.comeco; i < d.fim; i++)
@@ -152,11 +164,27 @@ int deque_remover(){
 			d.fim--;
 			d.v[d.fim] = 0;}
 		else if (r == 'f'){
-			d.v[d.fim] = 0;
-			d.fim--;}
+			d.fim--;
+			d.v[d.fim] = 0;}
 		else
-			printf("\nopção invalida\n\n");
+			printf("\nopção invalida\n\n");	}
+		else
+			printf("\no deque esta vazio\n\n");
 	}
+	
+int deque_exibir() {
+	int i;
+	printf("\n\n");
+	
+	if (d.comeco == d.fim)
+		printf("nao ha nenhum elemento no deque\n\n");
+	else{
+		for (i = d.comeco; i < d.fim; i++){
+		printf("elemento %i (posiçao %i do deque), ", d.v[i], i);
+	}
+	printf("\n\n");
+	}
+}
 
 
 // código principal da estrutura fila
@@ -259,7 +287,7 @@ deque(){
 		deque_remover();
 		break;
 		case '3':
-		fila_exibir();
+		deque_exibir();
 		break;
 		case '4':
 		if (f.fim == f.comeco) 
@@ -295,9 +323,10 @@ void main() {
 	f.fim = f.comeco;
 	p.topo = 0;
 	d.fim = d.comeco;
-	d.comeco - 0;		
+	d.comeco = 0;		
 	
 	do {
+		system('cls');
 	printf("insira a estrutura que deseja explorar: ");
 	scanf(" %c", &r);
 	switch (r){
