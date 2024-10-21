@@ -126,18 +126,19 @@ int deque_inserir() {
 	if (d.fim == 51)
 		printf("\no deque esta cheio\n\n");
 	else {
-		char r;
-		int n, i;
+		int n;
 		if (d.comeco != d.fim){
+			char r;
 			printf("\no elemento sera inserido pelo começo(c) ou pelo fim(f)? ");
 			scanf(" %c", &r);
 			printf("\n\ndigite o numero a ser inserido no deque: ");
 			scanf(" %i", &n);
 			if (r == 'c'){
-				for (i = d.fim; i > d.fim; i--)
+				int i;
+				d.fim++;
+				for (i = d.fim; i > d.comeco; i--)
 					d.v[i] = d.v[i-1];
-				d.v[d.comeco] = n;
-				d.fim++;}
+				d.v[d.comeco] = n;}
 			else if (r == 'f'){
 				d.v[d.fim] = n;
 				d.fim++;}
@@ -155,19 +156,21 @@ int deque_inserir() {
 int deque_remover(){
 		char r;
 		int i;
-		if (d.comeco == d.fim){
+		if (d.comeco != d.fim){
 			printf("\no elemento sera removido pelo começo(c) ou pelo fim(f)? ");
-		scanf("%c", &r);
-		if (r == 'c'){
-			for (i = d.comeco; i < d.fim; i++)
-				d.v[i] = d.v[i+1];
-			d.fim--;
-			d.v[d.fim] = 0;}
-		else if (r == 'f'){
-			d.fim--;
-			d.v[d.fim] = 0;}
-		else
-			printf("\nopção invalida\n\n");	}
+			scanf(" %c", &r);
+			if (r == 'c'){
+				for (i = d.comeco; i < d.fim; i++)
+					d.v[i] = d.v[i+1];
+				d.fim--;
+				d.v[d.fim] = 0;
+				printf("\no elemento foi removido\n\n");}
+			else if (r == 'f'){
+				d.fim--;
+				d.v[d.fim] = 0;
+				printf("\no elemento foi removido\n\n");}
+			else
+				printf("\nopção invalida\n\n");	}
 		else
 			printf("\no deque esta vazio\n\n");
 	}
@@ -186,6 +189,23 @@ int deque_exibir() {
 	}
 }
 
+int deque_localizar() {
+	int n, i, x;
+	x = -1;
+	
+	printf("\nentre com o numero que se deseja localizar: ");
+	scanf("%i", &n);
+	
+	for (i = d.comeco; i < d.fim; i++){
+		if (d.v[i] == n)
+			x = i;
+	}
+	
+	if (x != -1)
+		printf("\no elemento procurado esta na posiçao %i do deque\n\n", x);
+	else
+		printf("\no elemento procurado nao esta presente no deque\n\n");
+}
 
 // código principal da estrutura fila
 int fila (){
@@ -272,7 +292,7 @@ int pilha(){
 
 // código principal da estrutura deque
 deque(){
-	printf("\n\ncomandos:\n\ninserçao(1)\nremoçao(2)\nexibiçao dos elementos(3)\nverificar se esta vazia(4) ou cheia(5)\nlocalizar elementos(6)\nfechar estrutura(s)\n\n");	
+	printf("\n\ncomandos:\n\ninserçao(1)\nremoçao(2)\nexibiçao dos elementos(3)\nverificar se esta vazio(4) ou cheio(5)\nlocalizar elementos(6)\nfechar estrutura(s)\n\n");	
 	
 	char a;		
 	
@@ -290,19 +310,19 @@ deque(){
 		deque_exibir();
 		break;
 		case '4':
-		if (f.fim == f.comeco) 
-        	printf("\na fila esta vazia\n\n");
+		if (d.fim == d.comeco) 
+        	printf("\no deque esta vazio\n\n");
     	else 
-        	printf("\na fila nao esta vazia\n\n");
+        	printf("\no deque nao esta vazio\n\n");
 		break;
 		case '5':
-		if (f.fim == 51)
-			printf("\na fila esta cheia\n\n");
+		if (d.fim == 51)
+			printf("\no deque esta cheio\n\n");
 		else
-			printf("\na fila nao esta cheia\n\n");
+			printf("\no deque nao esta cheio\n\n");
 		break;
 		case '6':
-		fila_localizar();
+		deque_localizar();
 		break;
 		case 's':
 		printf("\nestrutura fechada\n\n");
@@ -322,11 +342,10 @@ void main() {
 	f.comeco = 0;
 	f.fim = f.comeco;
 	p.topo = 0;
-	d.fim = d.comeco;
-	d.comeco = 0;		
+	d.comeco = 0;
+	d.fim = d.comeco;		
 	
 	do {
-		system('cls');
 	printf("insira a estrutura que deseja explorar: ");
 	scanf(" %c", &r);
 	switch (r){
