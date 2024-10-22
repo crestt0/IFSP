@@ -3,13 +3,13 @@
 #include <locale.h>
 
 /* Funcionalidades a serem implementadas na estrutura FILA: 
- InserÁ„o, remoÁ„o, exibiÁ„o dos elementos e suas respectivas posiÁıes na fila, verificaÁ„o se a fila est· vazia, verificaÁ„o se a fila est· cheia, 
- localizaÁ„o de um elemento e a posiÁ„o do elemento caso esteja na FILA.
+ Inser√ß√£o, remo√ß√£o, exibi√ß√£o dos elementos e suas respectivas posi√ß√µes na fila, verifica√ß√£o se a fila est√° vazia, verifica√ß√£o se a fila est√° cheia, 
+ localiza√ß√£o de um elemento e a posi√ß√£o do elemento caso esteja na FILA.
 
  Funcionalidades a serem implementadas na estrutura PILHA:
- InserÁ„o, remoÁ„o, Topo (mostra o elemento que est· no topo da pilha mas n„o o remove) , verificaÁ„o se a pilha est· vazia, verificaÁ„o se a pilha est· cheia. */
+ Inser√ß√£o, remo√ß√£o, Topo (mostra o elemento que est√° no topo da pilha mas n√£o o remove) , verifica√ß√£o se a pilha est√° vazia, verifica√ß√£o se a pilha est√° cheia. */
 
-// declaraÁıes de fila f e pilha p
+// declara√ß√µes de fila f e pilha p
 typedef struct {
 	int v[50];
 	int fim, comeco;
@@ -24,15 +24,20 @@ typedef struct {
 
 declara_pilha p;
 
-// funÁıes da estrutura fila
+// fun√ß√µes da estrutura fila
 int fila_inserir (){
 	int n;
 	
-	printf("\n\ndigite o numero a ser inserido na fila: ");
+	if (f.fim == 51)
+		printf("\na fila esta cheia\n\n");
+	else {
+	printf("\ndigite o numero a ser inserido na fila: ");
 	scanf("%i", &n);
 	
 	f.v[f.fim] = n;
 	f.fim++;
+	
+	printf("\n");}
 }
 
 int fila_remover(){
@@ -43,7 +48,7 @@ int fila_remover(){
 			f.v[i] = f.v[i+1];}
 			printf("\nelemento removido\n\n");}
 	else
-		printf("\nn„o h· elementos na fila\n\n"); 
+		printf("\nnao ha elementos na fila\n\n");  
 	}
 
 
@@ -52,10 +57,10 @@ int fila_exibir(){
 	printf("\n\n");
 	
 	if (f.comeco == f.fim)
-		printf("n„o h· nenhum elemento na fila\n\n");
+		printf("nao ha nenhum elemento na fila\n\n");
 	else{
 		for (i = f.comeco; i < f.fim; i++){
-		printf("elemento %i (posiÁ„o %i da fila), ", f.v[i], i);
+		printf("elemento %i (posi√ßao %i da fila), ", f.v[i], i);
 	}
 	printf("\n\n");
 	}
@@ -74,36 +79,46 @@ int fila_localizar(){
 	}
 	
 	if (x != -1)
-		printf("\no elemento procurado esta na posiÁ„o %i da fila\n\n", x);
+		printf("\no elemento procurado esta na posi√ßao %i da fila\n\n", x);
 	else
-		printf("\no elemento procurado n„o esta presente na fila\n\n");
+		printf("\no elemento procurado nao esta presente na fila\n\n");
 }
 
-// funÁıes da estrutura pilha
+// fun√ß√µes da estrutura pilha
 int pilha_inserir(){
 	int n;
 	
-	printf("\n\ndigite o numero a ser inserido na pilha: ");
+	if (p.topo == 51)
+		printf("\na pilha esta cheia\n\n");
+	else {
+	printf("\ndigite o numero a ser inserido na pilha: ");
 	scanf("%i", &n);
-	
+		
 	p.v[p.topo] = n;
 	p.topo++;
+	
+	printf("\n");}
 }
 
 int pilha_remover(){
-	p.v[p.topo - 1] = 0;
-	p.topo--;
-	printf("\nelemento removido\n\n");
+	if (p.topo == 0){
+		printf("\na pilha esta vazia\n\n");
+	}
+	else{
+		p.v[p.topo - 1] = 0;
+		p.topo--;
+		printf("\nelemento removido\n\n");	
+	}
 }
 
-// cÛdigo principal da estrutura fila
+// c√≥digo principal da estrutura fila
 int fila (){
-	printf("\n\ncomandos:\n\ninserÁ„o(1)\nremoÁ„o(2)\nexibiÁ„o dos elementos(3)\nverificar se esta vazia(4) ou cheia(5)\nlocalizar elementos(6)\nfechar estrutura(s)\n\n");	
+	printf("\n\ncomandos:\n\ninser√ßao(1)\nremo√ßao(2)\nexibi√ßao dos elementos(3)\nverificar se esta vazia(4) ou cheia(5)\nlocalizar elementos(6)\nfechar estrutura(s)\n\n");	
 	
 	char a;		
 	
 	do {
-	printf("insira a aÁ„o que deseja realizar: ");
+	printf("insira a a√ßao que deseja realizar: ");
 	scanf(" %c", &a);
 	switch (a){
 		case '1':
@@ -117,15 +132,15 @@ int fila (){
 		break;
 		case '4':
 		if (f.fim == f.comeco) 
-        	printf("\na fila est· vazia\n\n");
+        	printf("\na fila esta vazia\n\n");
     	else 
-        	printf("\na fila n„o est· vazia\n\n");
+        	printf("\na fila nao esta vazia\n\n");
 		break;
 		case '5':
 		if (f.fim == 51)
 			printf("\na fila esta cheia\n\n");
 		else
-			printf("\na fila n„o esta cheia\n\n");
+			printf("\na fila nao esta cheia\n\n");
 		break;
 		case '6':
 		fila_localizar();
@@ -137,14 +152,14 @@ int fila (){
 		printf("\ncomando invalido\n\n");}}
 	while (a != 's');}
 
-// cÛdigo principal da estrutura pilha
+// c√≥digo principal da estrutura pilha
 int pilha(){
-	printf("\n\ncomandos:\n\ninserÁ„o(1)\nremoÁ„o(2)\nexibir topo(3)\nverificar se esta vazia(4) ou cheia(5)\nfechar estrutura(s)\n\n");	
+	printf("\n\ncomandos:\n\ninser√ßao(1)\nremo√ßao(2)\nexibir topo(3)\nverificar se esta vazia(4) ou cheia(5)\nfechar estrutura(s)\n\n");	
 	
 	char a;		
 	
 	do {
-	printf("insira a aÁ„o que deseja realizar: ");
+	printf("insira a a√ßao que deseja realizar: ");
 	scanf(" %c", &a);
 	switch (a){
 		case '1':
@@ -155,7 +170,7 @@ int pilha(){
 		break;
 		case '3':
 		if (p.topo == 0)
-			printf("\nn„o h· nenhum elemento na pilha\n\n");
+			printf("\nnao ha nenhum elemento na pilha\n\n");
 		else
 			printf("\no elemento %i esta no topo da pilha\n\n", p.v[p.topo-1]);
 		break;
@@ -163,13 +178,13 @@ int pilha(){
 		if (p.topo == 0)
 			printf("\na pilha esta vazia\n\n");
 		else
-			printf("\na pilha n„o esta vazia\n\n");
+			printf("\na pilha nao esta vazia\n\n");
 		break;
 		case '5':
 		if (p.topo == 51)
 			printf("\na pilha esta cheia\n\n");
 		else
-			printf("\na pilha n„o esta cheia\n\n");
+			printf("\na pilha nao esta cheia\n\n");
 		break;
 		case 's':
 		printf("\nestrutura fechada\n\n");
@@ -179,7 +194,7 @@ int pilha(){
 	while (a != 's');
 } 
 
-// funÁ„o main
+// fun√ß√£o main
 void main() {
 	setlocale(LC_ALL, "Portuguese");
 	
