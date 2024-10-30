@@ -3,30 +3,23 @@ package aula2_java;
 public class Main {
 
 	public static void main(String[] args) {
-		AlunoGraduacao alunogradua = new AlunoGraduacao();
-		AlunoPosGraduacao alunopos = new AlunoPosGraduacao();
-		AlunoTecnico alunotec = new AlunoTecnico();
+		Livro livro1 = new Livro("Crime e Castigo", "Dostoiévski", 1866, "Romance");
+		Revista revista1 = new Revista("Super Interessante", "Editora Abril", 1987, 1);
+		Artigo artigo1 = new Artigo("Inteligência Artificial e sociedade: avanços e riscos", "Jaime Simão Sichman", 2021, "Inteligência Artificial");
 		
-		alunogradua.curso = "Sistemas de Informação.";
-		alunogradua.matricula = "SP111222333";
-		alunogradua.nome = "Vinicius";
 		
-		alunopos.areaPesquisa = "Tecnologia da Informação";
-		alunopos.matricula = "SP333222111";
-		alunopos.nome = "João";
+		livro1.mostrarInfo();
+		livro1.exibirGenero();
 		
-		alunotec.cargaHoraria = 360;
-		alunotec.matricula = "SP000000000";
-		alunotec.nome = "Pedro";
+		System.out.println("-------------------------------------------");
 		
-		alunogradua.estudar();
-		alunogradua.fazerEstagio();
+		revista1.mostrarInfo();
+		revista1.exibirEdicao();
 		
-		alunopos.estudar();
-		alunopos.defenderTese();
+		System.out.println("-------------------------------------------");
 		
-		alunotec.estudar();
-		alunotec.realizarProjeto();
+		artigo1.mostrarInfo();
+		artigo1.exibirAreaPesquisa();
 	}
 
 }
