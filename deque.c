@@ -57,7 +57,7 @@ int fila_remover(){
 		f.fim--;
 		for (i = f.comeco; i < f.fim; i++){
 			f.v[i] = f.v[i+1];}
-			printf("\nelemento removido\n\n");}
+		printf("\nelemento removido\n\n");}
 	else
 		printf("\nnao ha elementos na fila\n\n");  
 	}
