@@ -3,23 +3,32 @@ package aula2_java;
 public class Main {
 
 	public static void main(String[] args) {
-		Livro livro1 = new Livro("Crime e Castigo", "Dostoiévski", 1866, "Romance");
-		Revista revista1 = new Revista("Super Interessante", "Editora Abril", 1987, 1);
-		Artigo artigo1 = new Artigo("Inteligência Artificial e sociedade: avanços e riscos", "Jaime Simão Sichman", 2021, "Inteligência Artificial");
+		Música musica1 = new Música("White Ferrari", "Frank Ocean", 249, "Neo Soul");
+		Podcast podcast1 = new Podcast("PodPah", "Igão e Mítico", 11273, 248);
 		
+		musica1.exibirInfo();
+		podcast1.exibirInfo();
 		
-		livro1.mostrarInfo();
-		livro1.exibirGenero();
+		System.out.println("O gênero da música é: " + musica1.getGenero());
+		System.out.println("O episódio do podcast é:" + podcast1.getEpisodio());
 		
-		System.out.println("-------------------------------------------");
+		System.out.println("-----------------------------------------------------------------");
 		
-		revista1.mostrarInfo();
-		revista1.exibirEdicao();
+		musica1.setAutor("Tyler, the creator");
+		musica1.setTitulo("She (Ft. Frank Ocean)");
+		musica1.setDuraçao(294);
+		musica1.seteGenero("Rap");
 		
-		System.out.println("-------------------------------------------");
+		podcast1.setTitulo("Bocadinhas");
+		podcast1.setAutor("Lucas e Marcelo");
+		podcast1.setDuraçao(13872);
+		podcast1.setEpisodio(112);
 		
-		artigo1.mostrarInfo();
-		artigo1.exibirAreaPesquisa();
+		musica1.exibirInfo();
+		podcast1.exibirInfo();
+		
+		System.out.println("O gênero da música é: " + musica1.getGenero());
+		System.out.println("O episódio do podcast é:" + podcast1.getEpisodio());
 	}
 
 }
