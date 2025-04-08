@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.io.IOException;
 
-public class ExcecaoAcessoNegado extends Exception{
+class ExcecaoAcessoNegado extends Exception{
     ExcecaoAcessoNegado (String login){
         super(login);
     }
@@ -9,7 +9,11 @@ public class ExcecaoAcessoNegado extends Exception{
 
 public class Main
 {
-	public static void 
+	public static void Verificacao (String login) throws ExcecaoAcessoNegado{
+	    if (!login.equals("admin")){
+	        throw new ExcecaoAcessoNegado("Acesso negado");
+	    }
+	}
 	
 	public static void main(String[] args) {
 		Scanner scn = new Scanner(System.in);
@@ -17,9 +21,9 @@ public class Main
         try {
             System.out.println("Insira o nome de usuario: ");
             String login = scn.nextLine();
-            ExcecaoAcessoNegado(login);
+            Verificacao(login);
         }
-        catch(AcessoNegadoException e){
+        catch(ExcecaoAcessoNegado e){
             System.out.println(e.getMessage());
         }
 		
