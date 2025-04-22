@@ -10,6 +10,8 @@ public class Main{
         lista.add ("Banana");
         lista.add ("Pera");
         lista.add ("Laranja");
+
+        lista.remove("Pera");
         
         //int PosicaoBanana = lista.indexOf("Banana");
         //lista.set(PosicaoBanana, "Abacaxi");
