@@ -24,6 +24,8 @@ public class Main{
             numeros.set(i, aux);
         }
         
+        Collections.sort(numeros);
+        
         System.out.println(numeros);
     }
 }
