@@ -14,5 +14,11 @@ public class Main{
         for (int i = 0; i < 4; i++){
             System.out.printf("%s, ", lista[i]);
         }
+
+        int[] vetor = {30, 10, 50, 20, 40};
+
+        for (int i = 0; i < 4; i++){
+            System.out.printf("%s, ", vetor[i]);
+        }
     }
 }
