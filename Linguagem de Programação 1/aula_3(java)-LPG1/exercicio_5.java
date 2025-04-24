@@ -26,6 +26,11 @@ public class Main{
         
         Collections.sort(numeros);
         
+        if (numeros.contains(50)){
+            numeros.remove((Integer) 50);
+            System.out.println("Numero 50 removido");
+        }
+        
         System.out.println(numeros);
     }
 }
