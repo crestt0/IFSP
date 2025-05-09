@@ -28,7 +28,7 @@ declara_pilha p;
 int fila_inserir (){
 	int n;
 	
-	if (f.fim == 51)
+	if (f.fim == 50)
 		printf("\na fila esta cheia\n\n");
 	else {
 	printf("\ndigite o numero a ser inserido na fila: ");
