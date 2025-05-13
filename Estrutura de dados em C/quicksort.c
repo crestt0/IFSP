@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int QuickSort(int *vet, int tam){
+void QuickSort(int *vet, int tam){
     if (tam < 2){
         return;
     }
