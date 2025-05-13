@@ -3,35 +3,24 @@
 
 int main()
 {
-    char buf[100], aux[6];
-    int i, j, tam, x = 0;
-    printf("insira a sequencia de numeros separados por virgula e termine com ponto (exemplo: 1, 2, 50, 0, 32.): ");
-    gets(buf);
-    for (i = 0, j = 0; buf[i] != '.'; i++){
-        if (buf[i] == ','){
-            j++;
-        }
-    }
-    tam = j + 1;
-    int vet[tam];
+    int buffer[1000], tam = 0;
     
-    for (i = 0; buf[i] != '.'; i++){
-        if (buf[i] != ',' && buf[i] != ' '){
-            j = 0;
-            do {
-                aux[j] = buf[i];
-                i++;
-                j++;
-            } while (buf[i+1] != ',' || buf[i+1] != ',');
-            vet[x] = atoi(aux);
-            x++;
-            for (j = 0; j < 6; j++)
-                aux[j] = '.';
-        }
-        
+    printf("entre com o valor dos numeros separado por espaço e termine com 'f'(exemplo: 1 3 50 2 4444 0 f): ");
+    
+    int result;
+    while ((result = scanf("%i", &buffer[tam])) == 1) {
+        tam++;
+    }
+
+    int vetor[tam];
+
+    for (i = 0; i < tam; i++) {
+        vetor[i] = buffer[i];
     }
     
     for (i = 0; i < tam; i++){
-        printf("%i/ ", vet[i]);
+        printf("%i /", vetor[i]);
     }
+    
+    return 0;
 }
