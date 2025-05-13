@@ -51,7 +51,7 @@ int main()
     QuickSort(vetor, tam);
 
     printf("vetor ordenado: ");
-    for (i = 0; i < x; i++){
+    for (i = 0; i < tam; i++){
         printf("%i, ", vetor[i]);
     }
 
