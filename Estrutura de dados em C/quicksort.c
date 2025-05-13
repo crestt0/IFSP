@@ -35,9 +35,20 @@ int QuickSort(int *vet, int tam){
 
 int main()
 {
-    int i, x = 17;
-    int vetor[] = {4, 3, 1, 9, 6, 10, 500, 67, 344, 90, 627, 948, 256, 78, 3, 293, 5};
-    QuickSort(vetor, x);
+    int i, tam = 0, buffer[1000];
+    printf("entre com o valor dos numeros separado por espaço e termine com 'f'(exemplo: 1 3 50 2 4444 0 f): ");
+    
+    int result;
+    while ((result = scanf("%i", &buffer[tam])) == 1) {
+        tam++;
+    }
+
+    int vetor[tam];
+
+    for (i = 0; i < tam; i++) {
+        vetor[i] = buffer[i];
+    }
+    QuickSort(vetor, tam);
     for (i = 0; i < x; i++){
         printf("%i, ", vetor[i]);
     }
