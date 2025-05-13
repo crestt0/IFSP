@@ -49,6 +49,8 @@ int main()
         vetor[i] = buffer[i];
     }
     QuickSort(vetor, tam);
+
+    printf("vetor ordenado: ");
     for (i = 0; i < x; i++){
         printf("%i, ", vetor[i]);
     }
