@@ -53,7 +53,7 @@ int main()
         scanf(" %c", &resposta);
         switch(resposta){
         case '1':
-            printf("entre com o valor dos numeros separado por espaço e termine com 'f'(exemplo: 1 3 50 2 4444 0 f): ");
+            printf("\nentre com o valor dos numeros separado por espaço e termine com 'f'(exemplo: 1 3 50 2 4444 0 f): ");
             
             int result;
             while ((result = scanf("%i", &buffer[tam])) == 1) {
