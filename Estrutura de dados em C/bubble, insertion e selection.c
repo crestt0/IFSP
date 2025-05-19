@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 void bubble(int *vet, int tam){
     int i, j, aux;
@@ -47,6 +48,7 @@ int main()
 {
     int buffer[1000], tam = 0, i, *vetor;
     char resposta;
+    double tempoGasto;
     
     while(1){
         printf("\nfuncionalidades: \n\ninserir elementos na lista(1)\nvisualizar a lista atual(2)\napagar a lista atual(3)\nordenar por bubble sort(4)\nordenar por selection sort(5)\nordenar por insertion sort(6)\n\nresposta: ");
@@ -85,16 +87,31 @@ int main()
             printf("\nlista apagada com sucesso\n");
             break;
         case '4':
+            clock_t begin1 = clock();
+            
             bubble(vetor, tam);
-            printf("\nvetor ordenado pelo bubble sort\n");
+            
+            clock_t end1 = clock();
+            tempoGasto = 1000*((double)(end1 - begin1) / CLOCKS_PER_SEC);
+            printf("\nvetor ordenado pelo bubble sort, tempo gasto: %f * 10^-3 segundos\n", tempoGasto);
             break;
         case '5':
+            clock_t begin2 = clock();
+            
             selection(vetor, tam);
-            printf("\nvetor ordenado pelo selection sort\n");
+            
+            clock_t end2 = clock();
+            tempoGasto = 1000*((double)(end2 - begin2) / CLOCKS_PER_SEC);
+            printf("\nvetor ordenado pelo selection sort, tempo gasto: %f * 10^-3 segundos\n", tempoGasto);
             break;
         case '6':
+            clock_t begin3 = clock();
+            
             insertion(vetor, tam);
-            printf("\nvetor ordenado pelo insertion sort\n");
+            
+            clock_t end3 = clock();
+            tempoGasto = 1000*((double)(end3 - begin3) / CLOCKS_PER_SEC);
+            printf("\nvetor ordenado pelo insertion sort, tempo gasto: %f * 10^-3 segundos\n", tempoGasto);
             break;
         default:
             printf("\ncomando não identificado\n");
