@@ -1,35 +1,40 @@
-class Produto {
-    private int Codigo;
-    private String Nome;
-    private double Preco;
-    
-    public Produto (int newCodigo, String newNome, double newPreco){
-        this.Codigo = newCodigo;
-        this.Nome = newNome;
-        this.Preco = newPreco;
+public class Produto {
+
+    private int codigo;
+    private String nome;
+    private double preco;
+
+    public Produto(int codigo, String nome, double preco){
+        this.codigo = codigo;
+        this.nome = nome;
+        this.preco = preco;
     }
 
-    public void setCodigo(int newCodigo){
-        this.Codigo = newCodigo;
+    public void setCodigo(int newCodigo) {
+        this.codigo = newCodigo;
     }
 
-    public void setNome (String newNome){
-        this.Nome = newNome;
+    public void setNome(String newNome){
+        this.nome = newNome;
     }
 
-    public void setPreco (double newPreco){
-        this.Preco = newPreco;
+    public void setPreco(double newPreco){
+        this.preco = newPreco;
     }
 
     public int getCodigo(){
-        return this.Codigo;
+        return codigo;
     }
 
     public String getNome(){
-        return this.Nome;
+        return nome;
     }
 
-    public double getPreco(){
-        return this.Preco;
+    public double getPreco() {
+        return preco;
+    }
+
+    public String toString(){
+        return "produto: " + this.nome + ", código: " + this.codigo + ", preço: " + this.preco;
     }
 }
